@@ -3,12 +3,7 @@ cryptocurrencychart
 
 Simple wrapper around the crypto currency chart api.  
 
-Installation
-------------
-
-```bash
-pip install cryptocurrencychart
-```
+Forked from: https://github.com/gdoermann/cryptocurrencychart
 
 Configuration
 -------------
