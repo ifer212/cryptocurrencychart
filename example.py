@@ -46,7 +46,7 @@ use_dtypes = ['price',
               ]
 
 # Loopping through each coin
-for c, coin in enumerate(coins[100:500]):
+for c, coin in enumerate(coins[0:500]):
     print(f'Doing {coin["name"]} ({coin["symbol"]})')
     coin_list = []
     filename = 'data/'+coin['name']+'.csv'
