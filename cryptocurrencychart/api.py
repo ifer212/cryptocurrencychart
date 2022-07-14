@@ -34,6 +34,13 @@ class CryptoCurrencyChartApi:
     def get_coins(self):
         url = self._url(urls.GET_COINS)
         return self.get(url)['coins']
+    
+    @lru_cache()
+    def get_mcap_coins(self):
+        url = self._url(urls.GET_MCAP_COINS)
+        return self.get(url)['coins']
+    
+    
 
     @lru_cache()
     def get_data_types(self):
@@ -58,6 +65,15 @@ class CryptoCurrencyChartApi:
             base_currency = self.BASE
         url = self._url(urls.VIEW_COIN_HISTORY, coin=coin, start=start, end=end, base=base_currency)
         return self.get(url)
+    
+    def view_coin_varhistory(self, coin: int, start: datetime.date, end: datetime.date, data_type: str = None, base_currency: str = None):
+        if base_currency is None:
+            base_currency = self.BASE
+        if data_type is None:
+            data_type = "marketCap"
+        url = self._url(urls.VIEW_COIN_VARHISTORY, coin=coin, start=start, end=end, datatype=data_type, base=base_currency)
+        #return self.get(url)
+        return self.get(url, headers = {'User-agent': 'your bot 0.1'})
 
     def get(self, url, **kwargs):
         response = self.session.get(url, **kwargs)
